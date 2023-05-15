@@ -191,13 +191,18 @@ nextflow pull hoelzer-lab/rnaflow -r <RELEASE>
 ## Usage
 
 ```bash
-nextflow run hoelzer-lab/rnaflow --reads input.csv --autodownload hsa --pathway hsa --max_cores 6 --cores 2
+nextflow run hoelzer-lab/rnaflow --reads input.csv \
+   --output rnaseq-out \
+   --autodownload hsa --pathway hsa \
+   --max_cores 6 --cores 2
 ```
 
 with `--autodownload <hsa|mmu|mau|eco>` [build-in species](#build-in-species), or define your own genome reference and annotation files in CSV files:
 
 ```bash
-nextflow run hoelzer-lab/rnaflow --reads input.csv --genome fastas.csv --annotation gtfs.csv --max_cores 6 --cores 2
+nextflow run hoelzer-lab/rnaflow --reads input.csv \
+  --genome fastas.csv --annotation gtfs.csv \
+  --max_cores 6 --cores 2
 ```
 
 Genomes and annotations from `--autodownload`, `--genome` and `--annotation` are concatenated.
@@ -205,6 +210,9 @@ Genomes and annotations from `--autodownload`, `--genome` and `--annotation` are
 By default, all possible comparisons are performed. Use `--deg` to change this.
 
 `--pathway <hsa|mmu|mau>` performs downstream pathway analysis. Available are WebGestalt set enrichment analysis (GSEA) for `hsa`, piano GSEA with different settings and consensus scoring for `hsa`, `mmu` and `mau`.
+
+The default output directory is `results`, unless otherwise specified with `--output`.
+
 
 ### Input files
 
